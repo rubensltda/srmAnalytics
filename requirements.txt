@@ -1,0 +1,9 @@
+python -m venv _venv
+
+pip install pandas
+pip install matplotlib
+pip install openpyxl
+pip install scipy (for interpolation)
+
+pip install --index-url=https://bcms.bloomberg.com/pip/simple blpapi
+pip install xbbg

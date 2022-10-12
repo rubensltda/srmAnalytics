@@ -1,0 +1,6 @@
+install python 3.8.10
+pip install virtualenv
+virtualenv venv		
+
+(venv) pip install pandas
+(venv) pip install openpyxl
