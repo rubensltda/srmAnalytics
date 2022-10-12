@@ -1,6 +1,7 @@
 # Pending to code
 # -----------------------------------------------------------------------
-# enviar do email BID: criar usuario generico / lista distribuicao
+# enviar do email BID: 
+# criar usuario generico / lista distribuicao
 # criar thread para mandar email
 # percentile in curves statistics
 # deploy in BBG machine

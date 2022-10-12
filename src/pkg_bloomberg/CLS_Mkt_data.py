@@ -128,7 +128,7 @@ class CLS_Mkt_data():
         #x = self.get_mkt_price('FEDL01 Index',dt.date.today())
         y = self.get_mkt_price('SPX Index',dt.date.today())
         w = self.get_mkt_price('USOSFR5 BGN Curncy',dt.date.today())
-        z = self.get_mkt_price('BRL Curncy',dt.date.today())
+        z = self.get_mkt_price('USSWAP5 Curncy',dt.date.today())
         
         #last_available_date = min(x[0],y[0],w[0],z[0])
         last_available_date = min(y[0],w[0],z[0])
