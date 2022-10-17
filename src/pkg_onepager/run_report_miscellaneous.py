@@ -44,7 +44,7 @@ def run_report_miscellaneous():
 
     message.add_content_html(f"<h3 style='background-color:powderblue;'>Chart of the week</h3>")
     #message.add_content_html(report_asset.generate_html_asset_summary(mkt_data, "GBP/USD",long_period=True) )
-    message.add_content_html(report_asset.generate_html_asset_summary(mkt_data, "Credit Suisse CDS",long_period=True) )
+    message.add_content_html(report_asset.generate_html_asset_summary(mkt_data, "Bloomberg UK Gilt 15+ TR value unhedged GBP",long_period=True) )
 
     message.add_content_html(f"<h3 style='background-color:powderblue;'>On inflation...</h3>")
     message.add_content_html(report_asset.generate_html_asset_summary(mkt_data, "CPI YOY",long_period=True) )
@@ -88,8 +88,8 @@ def run_report_miscellaneous():
     message.save_html_file()
 
     if config.send_email_flag == True:
-        #message.send_email_gmail()
-        message.send_email_idb()
+        message.send_email_gmail()
+        #message.send_email_idb()
 
     print("End processing...")
     

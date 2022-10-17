@@ -115,16 +115,16 @@ def find_previous_JAJO(date_input):
     date_month = date_input.month
     date_year = date_input.year
     
-    if (date_input >= dt.date(date_year, 1, 15)) and (date_input < dt.date(date_year, 4, 15)):
-        previous_JAJO = dt.date(date_year, 1, 15)
-    elif  (date_input >= dt.date(date_year, 4, 15)) and (date_input < dt.date(date_year, 7, 15)):
-        previous_JAJO = dt.date(date_year, 4, 15)
-    elif  (date_input >= dt.date(date_year, 7, 15)) and (date_input < dt.date(date_year, 10, 15)):
-        previous_JAJO = dt.date(date_year, 7, 15)
-    elif (date_input >= dt.date(date_year, 10, 15)):
-        previous_JAJO = dt.date(date_year, 10, 15)
+    if (date_input >= dt.date(date_year, 1, 13)) and (date_input < dt.date(date_year, 4, 13)):
+        previous_JAJO = dt.date(date_year, 1, 13)
+    elif  (date_input >= dt.date(date_year, 4, 13)) and (date_input < dt.date(date_year, 7, 13)):
+        previous_JAJO = dt.date(date_year, 4, 13)
+    elif  (date_input >= dt.date(date_year, 7, 13)) and (date_input < dt.date(date_year, 10, 13)):
+        previous_JAJO = dt.date(date_year, 7, 13)
+    elif (date_input >= dt.date(date_year, 10, 13)):
+        previous_JAJO = dt.date(date_year, 10, 13)
     else:
-        previous_JAJO = dt.date(date_year-1, 10, 15)
+        previous_JAJO = dt.date(date_year-1, 10, 13)
     return previous_JAJO
 
 
@@ -134,16 +134,16 @@ def find_next_JAJO(date_input):
     date_month = date_input.month
     date_year = date_input.year
     
-    if (date_input > dt.date(date_year, 1, 15)) and (date_input <= dt.date(date_year, 4, 15)):
-        next_JAJO = dt.date(date_year, 4, 15)
-    elif  (date_input > dt.date(date_year, 4, 15)) and (date_input <= dt.date(date_year, 7, 15)):
-        next_JAJO = dt.date(date_year, 7, 15)
-    elif  (date_input > dt.date(date_year, 7, 15)) and (date_input <= dt.date(date_year, 10, 15)):
-        next_JAJO = dt.date(date_year, 10, 15)
-    elif  (date_input <= dt.date(date_year, 1, 15)):
-        next_JAJO = dt.date(date_year, 1, 15)
+    if (date_input > dt.date(date_year, 1, 13)) and (date_input <= dt.date(date_year, 4, 13)):
+        next_JAJO = dt.date(date_year, 4, 13)
+    elif  (date_input > dt.date(date_year, 4, 13)) and (date_input <= dt.date(date_year, 7, 13)):
+        next_JAJO = dt.date(date_year, 7, 13)
+    elif  (date_input > dt.date(date_year, 7, 13)) and (date_input <= dt.date(date_year, 10, 13)):
+        next_JAJO = dt.date(date_year, 10, 13)
+    elif  (date_input <= dt.date(date_year, 1, 13)):
+        next_JAJO = dt.date(date_year, 1, 13)
     else:
-        next_JAJO = dt.date(date_year+1, 1, 15)
+        next_JAJO = dt.date(date_year+1, 1, 13)
     return next_JAJO
 
 

@@ -115,7 +115,8 @@ tickers_list =[
                         "EHGDUSY Index",
                         "EHUPUS Index",
                         "PRUSTOT Index",
-                        "CRDSUI CDS EUR SR 5Y D14 Corp"
+                        "CRDSUI CDS EUR SR 5Y D14 Corp",
+                        "LF55TRGU Index"
                         ]
 
 PE_list = ['SPX Index','CCMP Index','IBOV Index']

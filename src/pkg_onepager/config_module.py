@@ -148,7 +148,8 @@ def initialize():
                     "NASDAQ Trailing P/E": ["CCMP Index_PE_trailing","Price","Gray","-"],
                     "IBOV Forward P/E": ["IBOV Index_PE_forward","Price","Black","-"],
                     "IBOV Trailing P/E": ["IBOV Index_PE_trailing","Price","Gray","-"],
-                    "Credit Suisse CDS": ["CRDSUI CDS EUR SR 5Y D14 Corp","Price","Green","-"]
+                    "Credit Suisse CDS": ["CRDSUI CDS EUR SR 5Y D14 Corp","Price","Green","-"],
+                    "Bloomberg UK Gilt 15+ TR value unhedged GBP": ["LF55TRGU Index","Price","Green","-"],
                 }
     
 

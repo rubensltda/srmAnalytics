@@ -70,8 +70,8 @@ def run_report_BasisRisk():
     message.save_html_file()
 
     if config.send_email_flag == True:
-        #message.send_email_gmail()
-        message.send_email_idb()
+        message.send_email_gmail()
+        #message.send_email_idb()
 
     print("End processing...")
     
