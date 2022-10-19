@@ -43,6 +43,7 @@ class CLS_Onepager_common():
                                     .style_table_content4   {text-align: right; width:  25px;  font: normal 14px Verdana, Geneva, sans-serif;}
                                     .style_table_content5   {text-align: center; width: 60px;  font: normal 14px Verdana, Geneva, sans-serif;}
                                     .style_table_content6   {text-align: center; width: 125px; font: normal 14px Verdana, Geneva, sans-serif;}
+                                    .style_table_content7   {text-align: left; font: normal 10px Verdana, Geneva, sans-serif;}
                                 </style>
                             </head>
                         '''

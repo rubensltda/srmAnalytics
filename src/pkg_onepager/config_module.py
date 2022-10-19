@@ -3,6 +3,7 @@
 # enviar do email BID: 
 # criar usuario generico / lista distribuicao
 # criar thread para mandar email
+# crirar metodo mais rapido para serie shiftada
 # percentile in curves statistics
 # deploy in BBG machine
 # criar e mostrar series SOFR 5bd e 15bg (according to NSG ALCO material)
@@ -37,7 +38,7 @@ def initialize():
     #Dates variables
     #--------------------------------------------------------------------------------------------------------
     global today_dt;           today_dt = dt.date.today()
-    #global today_dt;            today_dt = dt.date(2022, 10, 6) # for testing             
+    #global today_dt;            today_dt = dt.date(2022, 10, 18) # for testing             
     
     global this_EOQ_dt;         this_EOQ_dt = ut.find_quarter_end(today_dt)
     global previous_dt;         previous_dt = ut.find_previous_day(today_dt)

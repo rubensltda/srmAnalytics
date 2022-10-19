@@ -110,14 +110,14 @@ class CLS_Onepager_report_summary_basis():
         
         libor3m_ticker = config.assets_dict["Libor 3M"][0]
         
-        libo3M_jajo1_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_1)
-        libo3M_jajo2_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_2)
-        libo3M_jajo3_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_3)
-        libo3M_jajo4_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_4)
-        libo3M_jajo5_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_5)
-        libo3M_jajo6_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_6)
-        libo3M_jajo7_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_7)
-        libo3M_jajo8_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_8)
+        libo3M_jajo1_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_1 + relativedelta(days=-2))
+        libo3M_jajo2_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_2 + relativedelta(days=-2))
+        libo3M_jajo3_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_3 + relativedelta(days=-2))
+        libo3M_jajo4_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_4 + relativedelta(days=-2))
+        libo3M_jajo5_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_5 + relativedelta(days=-2))
+        libo3M_jajo6_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_6 + relativedelta(days=-2))
+        libo3M_jajo7_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_7 + relativedelta(days=-2))
+        libo3M_jajo8_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_8 + relativedelta(days=-2))
         
         sofr90d_ticker = config.assets_dict["SOFR 90d comp."][0]
         if ((jajo_dt_1 + relativedelta(months=+3)) > config.today_dt):
@@ -366,6 +366,14 @@ class CLS_Onepager_report_summary_basis():
                                                                 
                                                             </tr>
                                                         </table>
+                                                        <table>
+                                                            <tr>
+                                                                <td class='style_table_content7'>(*) <i> LIBOR3M considers 2bd settlement period. </i></td>
+                                                            </tr>
+                                                            <tr>
+                                                                <td class='style_table_content7'>(**) <i> SOFR90d Arrears is the accrued rate in 90d. </i></td>
+                                                            </tr>
+                                                        </table>
                                                     </td>
                                                     <td>
                                                         <table>
@@ -378,9 +386,7 @@ class CLS_Onepager_report_summary_basis():
                                                     </td>
                                                 </tr>
                                             </table>
-                                                    
                                             <br>
-                                        
                                         </td>
                                     </tr>
                                 </table>
