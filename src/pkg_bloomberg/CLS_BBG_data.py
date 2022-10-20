@@ -51,8 +51,15 @@ class CLS_BBG_data():
 
             return self.bbg_data
             
-    def save_file(self):
+    def save_file_local(self):
         now = dt.datetime.now()
         dt_now = now.strftime("%Y-%m-%d %H-%M-%S")
         self.bbg_data.to_excel(f"{config.path_output_folder}/query_bbg_{dt_now}.xlsx", sheet_name='query_rates')
         self.bbg_data.to_excel(f"{config.path_output_folder}/query_bbg.xlsx", sheet_name='query_rates')
+
+
+    def save_file_remote(self):
+        now = dt.datetime.now()
+        dt_now = now.strftime("%Y-%m-%d %H-%M-%S")
+        self.bbg_data.to_excel(f"{config.path_remote_output_folder}/query_bbg_{dt_now}.xlsx", sheet_name='query_rates')
+        self.bbg_data.to_excel(f"{config.path_remote_output_folder}/query_bbg.xlsx", sheet_name='query_rates')

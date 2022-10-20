@@ -21,8 +21,11 @@ sys.path.insert(1, os.path.abspath('./src'))
 
 #Paths
 #--------------------------------------------------------------------------------------------------------
-global path_output_folder;     path_output_folder = 'data'    
-global path_mkt_file;   path_mkt_file = 'data/query_bbg.xlsx'    
+global path_output_folder;              path_output_folder = 'data'    
+global path_remote_output_folder;       path_remote_output_folder = '//finnt11/qrm/Bloomberg'
+
+
+global path_mkt_file;           path_mkt_file = 'data/query_bbg.xlsx'    
 
 #global path_mkt_file_csv; path_mkt_file_csv = '_data/query_rates.csv'    
 

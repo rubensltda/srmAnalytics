@@ -8,5 +8,6 @@ query_end_dt = dt.date.today()
 bbg = cls_bbg.CLS_BBG_data()
 bbg.init_default_tickers(config.tickers_list,config.PE_list)
 bbg.query(query_start_dt, query_end_dt,'tickers_default')
-bbg.save_file()
+bbg.save_file_local()
+bbg.save_file_remote()
 
