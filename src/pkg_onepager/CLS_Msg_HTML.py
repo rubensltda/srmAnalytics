@@ -50,7 +50,7 @@ class CLS_Msg_HTML():
 
     def send_email_idb(self):
         self.sender_email = 'bloomrmp@iadb.org'
-        self.sender_password = ''
+        self.sender_password = ' '
         self.message['From'] = 'bloomrmp@iadb.org'
         self.message['To'] = ', '.join(self.receiver_email)
         self.message.attach(MIMEText(self.content_html , 'html', 'utf-8'))
