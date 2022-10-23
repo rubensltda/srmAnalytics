@@ -1,7 +1,7 @@
 
 import sys, os
 
-#print(sys.path)
+print(sys.path)
 print(os.environ["PYTHONPATH"])
 
 
