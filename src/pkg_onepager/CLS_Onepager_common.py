@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 from matplotlib.dates import MonthLocator, DateFormatter
 from email.mime.image import MIMEImage
 
-import config_module as config
+import pkg_onepager.config_module as config_onepager
 import pkg_common.utils as ut
 
 
@@ -18,7 +18,7 @@ class CLS_Onepager_common():
         #print("Class report initiated.")
         pass
         
-    def generate_html_header(self):
+    def generate_html_header(self, message_title):
         content_HTML = '''
                         <html>
                             <head>
@@ -58,7 +58,7 @@ class CLS_Onepager_common():
                                     </tr>
                                     <tr>
                                         <td>
-                                            <h2 class='text-align: left;'>{config.email_subject}</h2>
+                                            <h2 class='text-align: left;'>{message_title}</h2>
                                         </td>
                                     </tr>
                                 </table>
@@ -88,7 +88,7 @@ class CLS_Onepager_common():
         # from plotly.graph_objects import Layout
         # import plotly
         
-        #period_start_dt = ut.find_previous_quarter_date(config.last_12m_dt)
+        #period_start_dt = ut.find_previous_quarter_date(config_onepager.last_12m_dt)
         
         # plotly chart 
         # ########################################################

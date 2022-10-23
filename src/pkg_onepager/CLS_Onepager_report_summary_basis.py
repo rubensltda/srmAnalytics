@@ -11,7 +11,7 @@ from matplotlib.ticker import FormatStrFormatter
 from email.mime.image import MIMEImage
 import datetime as dt
 
-import config_module as config
+import pkg_onepager.config_module as config_onepager
 import pkg_common.utils as ut
 
 
@@ -30,75 +30,75 @@ class CLS_Onepager_report_summary_basis():
         # Market Rates  ############################################################################
         ############################################################################################
         rate_index_1 = "Fed Funds"
-        ticker_query_1 = config.assets_dict[rate_index_1][0]
-        today_px_1 = cls_df_rates.get_mkt_price(ticker_query_1,config.today_dt)
-        previous_px_1 = cls_df_rates.get_mkt_price(ticker_query_1,config.previous_dt)
+        ticker_query_1 = config_onepager.assets_dict[rate_index_1][0]
+        today_px_1 = cls_df_rates.get_mkt_price(ticker_query_1,config_onepager.today_dt)
+        previous_px_1 = cls_df_rates.get_mkt_price(ticker_query_1,config_onepager.previous_dt)
         daily_change_px_1 = ut.calculate_change(today_px_1[1] , previous_px_1[1])
         ############################################################################################
         rate_index_2 = "SOFR O/N"
-        ticker_query_2 = config.assets_dict[rate_index_2][0]
-        today_px_2 = cls_df_rates.get_mkt_price(ticker_query_2,config.today_dt)
-        previous_px_2 = cls_df_rates.get_mkt_price(ticker_query_2,config.previous_dt)
+        ticker_query_2 = config_onepager.assets_dict[rate_index_2][0]
+        today_px_2 = cls_df_rates.get_mkt_price(ticker_query_2,config_onepager.today_dt)
+        previous_px_2 = cls_df_rates.get_mkt_price(ticker_query_2,config_onepager.previous_dt)
         daily_change_px_2 = ut.calculate_change(today_px_2[1] , previous_px_2[1])
         ############################################################################################
         rate_index_3 = "Libor 3M"
-        ticker_query_3 = config.assets_dict[rate_index_3][0]
-        today_px_3 = cls_df_rates.get_mkt_price(ticker_query_3,config.today_dt)
-        previous_px_3 = cls_df_rates.get_mkt_price(ticker_query_3,config.previous_dt)
+        ticker_query_3 = config_onepager.assets_dict[rate_index_3][0]
+        today_px_3 = cls_df_rates.get_mkt_price(ticker_query_3,config_onepager.today_dt)
+        previous_px_3 = cls_df_rates.get_mkt_price(ticker_query_3,config_onepager.previous_dt)
         daily_change_px_3 = ut.calculate_change(today_px_3[1] , previous_px_3[1])
         ############################################################################################
         rate_index_4 = "Libor 6M"
-        ticker_query_4 = config.assets_dict[rate_index_4][0]
-        today_px_4 = cls_df_rates.get_mkt_price(ticker_query_4,config.today_dt)
-        previous_px_4 = cls_df_rates.get_mkt_price(ticker_query_4,config.previous_dt)
+        ticker_query_4 = config_onepager.assets_dict[rate_index_4][0]
+        today_px_4 = cls_df_rates.get_mkt_price(ticker_query_4,config_onepager.today_dt)
+        previous_px_4 = cls_df_rates.get_mkt_price(ticker_query_4,config_onepager.previous_dt)
         daily_change_px_4 = ut.calculate_change(today_px_4[1] , previous_px_4[1])
         ############################################################################################
         rate_index_5 = "SOFR 90d comp."
-        ticker_query_5 = config.assets_dict[rate_index_5][0]
-        today_px_5 = cls_df_rates.get_mkt_price(ticker_query_5,config.today_dt)
-        previous_px_5 = cls_df_rates.get_mkt_price(ticker_query_5,config.previous_dt)
+        ticker_query_5 = config_onepager.assets_dict[rate_index_5][0]
+        today_px_5 = cls_df_rates.get_mkt_price(ticker_query_5,config_onepager.today_dt)
+        previous_px_5 = cls_df_rates.get_mkt_price(ticker_query_5,config_onepager.previous_dt)
         daily_change_px_5 = ut.calculate_change(today_px_5[1] , previous_px_5[1])
         ############################################################################################
         rate_index_6 = "SOFR 180d comp."
-        ticker_query_6 = config.assets_dict[rate_index_6][0]
-        today_px_6 = cls_df_rates.get_mkt_price(ticker_query_6,config.today_dt)
-        previous_px_6 = cls_df_rates.get_mkt_price(ticker_query_6,config.previous_dt)
+        ticker_query_6 = config_onepager.assets_dict[rate_index_6][0]
+        today_px_6 = cls_df_rates.get_mkt_price(ticker_query_6,config_onepager.today_dt)
+        previous_px_6 = cls_df_rates.get_mkt_price(ticker_query_6,config_onepager.previous_dt)
         daily_change_px_6 = ut.calculate_change(today_px_6[1] , previous_px_6[1])
         ############################################################################################
         rate_index_7 = "SOFR Term 3M"
-        ticker_query_7 = config.assets_dict[rate_index_7][0]
-        today_px_7 = cls_df_rates.get_mkt_price(ticker_query_7,config.today_dt)
-        previous_px_7 = cls_df_rates.get_mkt_price(ticker_query_7,config.previous_dt)
+        ticker_query_7 = config_onepager.assets_dict[rate_index_7][0]
+        today_px_7 = cls_df_rates.get_mkt_price(ticker_query_7,config_onepager.today_dt)
+        previous_px_7 = cls_df_rates.get_mkt_price(ticker_query_7,config_onepager.previous_dt)
         daily_change_px_7 = ut.calculate_change(today_px_7[1] , previous_px_7[1])
         ############################################################################################
         rate_index_8 = "SOFR Term 6M"
-        ticker_query_8 = config.assets_dict[rate_index_8][0]
-        today_px_8 = cls_df_rates.get_mkt_price(ticker_query_8,config.today_dt)
-        previous_px_8 = cls_df_rates.get_mkt_price(ticker_query_8,config.previous_dt)
+        ticker_query_8 = config_onepager.assets_dict[rate_index_8][0]
+        today_px_8 = cls_df_rates.get_mkt_price(ticker_query_8,config_onepager.today_dt)
+        previous_px_8 = cls_df_rates.get_mkt_price(ticker_query_8,config_onepager.previous_dt)
         daily_change_px_8 = ut.calculate_change(today_px_8[1] , previous_px_8[1])
        ############################################################################################
         rate_index_9 = "BSBY3M Index"
-        ticker_query_9 = config.assets_dict[rate_index_9][0]
-        today_px_9 = cls_df_rates.get_mkt_price(ticker_query_9,config.today_dt)
-        previous_px_9 = cls_df_rates.get_mkt_price(ticker_query_9,config.previous_dt)
+        ticker_query_9 = config_onepager.assets_dict[rate_index_9][0]
+        today_px_9 = cls_df_rates.get_mkt_price(ticker_query_9,config_onepager.today_dt)
+        previous_px_9 = cls_df_rates.get_mkt_price(ticker_query_9,config_onepager.previous_dt)
         daily_change_px_9 = ut.calculate_change(today_px_9[1] , previous_px_9[1])
         ############################################################################################
         rate_index_10 = "Libor 3M | -90d shift"
-        ticker_query_10 = config.assets_dict["Libor 3M"][0]
-        today_px_10 = cls_df_rates.get_mkt_price(ticker_query_10,config.last_3m_dt)
+        ticker_query_10 = config_onepager.assets_dict["Libor 3M"][0]
+        today_px_10 = cls_df_rates.get_mkt_price(ticker_query_10,config_onepager.last_3m_dt)
         ############################################################################################
         rate_index_11 = "SOFR Term 3M | -90d shift"
-        ticker_query_11 = config.assets_dict["SOFR Term 3M"][0]
-        today_px_11 = cls_df_rates.get_mkt_price(ticker_query_11,config.last_3m_dt)
+        ticker_query_11 = config_onepager.assets_dict["SOFR Term 3M"][0]
+        today_px_11 = cls_df_rates.get_mkt_price(ticker_query_11,config_onepager.last_3m_dt)
         ############################################################################################
         rate_index_12 = "SOFR 90d | -10d shift"
-        ticker_query_12 = config.assets_dict["SOFR 90d comp."][0]
-        today_px_12 = cls_df_rates.get_mkt_price(ticker_query_12,config.today_dt + relativedelta(days=-10))
+        ticker_query_12 = config_onepager.assets_dict["SOFR 90d comp."][0]
+        today_px_12 = cls_df_rates.get_mkt_price(ticker_query_12,config_onepager.today_dt + relativedelta(days=-10))
 
 
         # JAJO #####################################################################################
         ############################################################################################
-        jajo_dt_1 = ut.find_previous_JAJO(config.today_dt)
+        jajo_dt_1 = ut.find_previous_JAJO(config_onepager.today_dt)
         jajo_dt_2 = jajo_dt_1 + relativedelta(months=-3)
         jajo_dt_3 = jajo_dt_1 + relativedelta(months=-6)
         jajo_dt_4 = jajo_dt_1 + relativedelta(months=-9)
@@ -108,7 +108,7 @@ class CLS_Onepager_report_summary_basis():
         jajo_dt_8 = jajo_dt_1 + relativedelta(months=-21)
         
         
-        libor3m_ticker = config.assets_dict["Libor 3M"][0]
+        libor3m_ticker = config_onepager.assets_dict["Libor 3M"][0]
         
         libo3M_jajo1_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_1 + relativedelta(days=-2))
         libo3M_jajo2_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_2 + relativedelta(days=-2))
@@ -119,8 +119,8 @@ class CLS_Onepager_report_summary_basis():
         libo3M_jajo7_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_7 + relativedelta(days=-2))
         libo3M_jajo8_px = cls_df_rates.get_mkt_price(libor3m_ticker,jajo_dt_8 + relativedelta(days=-2))
         
-        sofr90d_ticker = config.assets_dict["SOFR 90d comp."][0]
-        if ((jajo_dt_1 + relativedelta(months=+3)) > config.today_dt):
+        sofr90d_ticker = config_onepager.assets_dict["SOFR 90d comp."][0]
+        if ((jajo_dt_1 + relativedelta(months=+3)) > config_onepager.today_dt):
             sofr90d_jajo1_90dfwd_px = (jajo_dt_1 + relativedelta(months=+3),'*')
             sofr90d_jajo1_diff = '*'
         else:
@@ -146,8 +146,8 @@ class CLS_Onepager_report_summary_basis():
 
         
         # not used anymore (sofr -10d shift)
-        # sofr90d_ticker = config.assets_dict["SOFR 90d comp."][0]
-        # if ((jajo_dt_1 + relativedelta(months=+3)+ relativedelta(days=-10)) > config.today_dt):
+        # sofr90d_ticker = config_onepager.assets_dict["SOFR 90d comp."][0]
+        # if ((jajo_dt_1 + relativedelta(months=+3)+ relativedelta(days=-10)) > config_onepager.today_dt):
         #     sofr90d_jajo1_80dfwd_px = (jajo_dt_1 + relativedelta(months=+3)+ relativedelta(days=-10),'*')
         # else:
         #     sofr90d_jajo1_80dfwd_px = cls_df_rates.get_mkt_price(sofr90d_ticker,jajo_dt_1 + relativedelta(months=+3)+ relativedelta(days=-10))        
@@ -161,7 +161,7 @@ class CLS_Onepager_report_summary_basis():
         
         
         
-        #sofr90d_jajo1_px = cls_df_rates.get_mkt_price(sofr90d_ticker,config.today_dt)
+        #sofr90d_jajo1_px = cls_df_rates.get_mkt_price(sofr90d_ticker,config_onepager.today_dt)
         ############################################################################################
 
 

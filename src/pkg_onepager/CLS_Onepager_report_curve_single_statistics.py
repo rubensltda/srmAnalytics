@@ -13,9 +13,9 @@ from matplotlib.dates import MonthLocator, DateFormatter
 from matplotlib.ticker import FormatStrFormatter
 from email.mime.image import MIMEImage
 
-import config_module as config
+import pkg_onepager.config_module as config_onepager
 import pkg_common.utils as ut
-import functions_curves as ut_curves
+import pkg_onepager.functions_curves as ut_curves
 
 
 
@@ -28,108 +28,108 @@ class CLS_Onepager_report_curve_statistics():
         
     def generate_html_curve_summary(self, cls_df_rates, curve_query, showtable_tenors=[2,5,10,20,30]):
                 
-        date0 = config.today_dt
-        date1 = config.previous_dt
-        date2 = config.last_EOQ_dt
+        date0 = config_onepager.today_dt
+        date1 = config_onepager.previous_dt
+        date2 = config_onepager.last_EOQ_dt
         
                 
         #print(f"{asset_show_1} | {asset_show_2}")
         print(f"Generating curve report with statistics: {curve_query}")
         
-        tickers_list = [ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve_query, showtable_tenors[0]),
-                        ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve_query, showtable_tenors[1]),
-                        ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve_query, showtable_tenors[2]),
-                        ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve_query, showtable_tenors[3]),
-                        ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve_query, showtable_tenors[4])
+        tickers_list = [ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve_query, showtable_tenors[0]),
+                        ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve_query, showtable_tenors[1]),
+                        ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve_query, showtable_tenors[2]),
+                        ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve_query, showtable_tenors[3]),
+                        ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve_query, showtable_tenors[4])
                         ]
         #print(tickers_list)
         
-        today_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.today_dt),
-                     cls_df_rates.get_mkt_price(tickers_list[1],config.today_dt),
-                     cls_df_rates.get_mkt_price(tickers_list[2],config.today_dt),
-                     cls_df_rates.get_mkt_price(tickers_list[3],config.today_dt),
-                     cls_df_rates.get_mkt_price(tickers_list[4],config.today_dt)
+        today_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.today_dt),
+                     cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.today_dt),
+                     cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.today_dt),
+                     cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.today_dt),
+                     cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.today_dt)
                      ]
         #print(today_px)        
 
-        previous_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.previous_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[1],config.previous_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[2],config.previous_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[3],config.previous_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[4],config.previous_dt)
+        previous_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.previous_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.previous_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.previous_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.previous_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.previous_dt)
                      ]
         #print(previous_px)      
         date1 = previous_px[0][0]  
 
-        last_EOW_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_EOW_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[1],config.last_EOW_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[2],config.last_EOW_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[3],config.last_EOW_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[4],config.last_EOW_dt)
+        last_EOW_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_EOW_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_EOW_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_EOW_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_EOW_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_EOW_dt)
                      ]
         #print(last_EOW_px)        
 
-        last_EOM_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_EOM_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[1],config.last_EOM_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[2],config.last_EOM_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[3],config.last_EOM_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[4],config.last_EOM_dt)
+        last_EOM_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_EOM_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_EOM_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_EOM_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_EOM_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_EOM_dt)
                 ]
         #print(last_EOM_px)        
 
-        last_EOQ_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_EOQ_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[1],config.last_EOQ_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[2],config.last_EOQ_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[3],config.last_EOQ_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[4],config.last_EOQ_dt)
+        last_EOQ_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_EOQ_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_EOQ_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_EOQ_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_EOQ_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_EOQ_dt)
                 ]
         #print(last_EOQ_px)        
         date2 = last_EOQ_px[0][0]  
 
-        last_EOY_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_EOY_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[1],config.last_EOY_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[2],config.last_EOY_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[3],config.last_EOY_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[4],config.last_EOY_dt)
+        last_EOY_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_EOY_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_EOY_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_EOY_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_EOY_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_EOY_dt)
                 ]
         #print(last_EOY_px)        
 
-        last_1m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_1m_dt),
-                       cls_df_rates.get_mkt_price(tickers_list[1],config.last_1m_dt),
-                       cls_df_rates.get_mkt_price(tickers_list[2],config.last_1m_dt),
-                       cls_df_rates.get_mkt_price(tickers_list[3],config.last_1m_dt),
-                       cls_df_rates.get_mkt_price(tickers_list[4],config.last_1m_dt)
+        last_1m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_1m_dt),
+                       cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_1m_dt),
+                       cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_1m_dt),
+                       cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_1m_dt),
+                       cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_1m_dt)
                 ]
         #print(last_1m_px)        
 
-        last_3m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_3m_dt),
-                       cls_df_rates.get_mkt_price(tickers_list[1],config.last_3m_dt),
-                       cls_df_rates.get_mkt_price(tickers_list[2],config.last_3m_dt),
-                       cls_df_rates.get_mkt_price(tickers_list[3],config.last_3m_dt),
-                       cls_df_rates.get_mkt_price(tickers_list[4],config.last_3m_dt)
+        last_3m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_3m_dt),
+                       cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_3m_dt),
+                       cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_3m_dt),
+                       cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_3m_dt),
+                       cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_3m_dt)
                 ]
         #print(last_3m_px)        
 
-        last_12m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_12m_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[1],config.last_12m_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[2],config.last_12m_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[3],config.last_12m_dt),
-                        cls_df_rates.get_mkt_price(tickers_list[4],config.last_12m_dt)
+        last_12m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_12m_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_12m_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_12m_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_12m_dt),
+                        cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_12m_dt)
                 ]
         #print(last_12m_px)        
         
         
         # Statistics
         ###########################################################################
-        period_start_dt = config.last_EOQ_back8_dt
-        period_end_dt = config.today_dt
+        period_start_dt = config_onepager.last_EOQ_back8_dt
+        period_end_dt = config_onepager.today_dt
         
         #df_historic = cls_df_rates.get_mkt_price_period(tickers_list,period_start_dt,period_end_dt)
-        df_historic_12m_0 = cls_df_rates.get_mkt_price_period(tickers_list[0],config.last_12m_dt,period_end_dt)
-        df_historic_12m_1 = cls_df_rates.get_mkt_price_period(tickers_list[1],config.last_12m_dt,period_end_dt)
-        df_historic_12m_2 = cls_df_rates.get_mkt_price_period(tickers_list[2],config.last_12m_dt,period_end_dt)
-        df_historic_12m_3 = cls_df_rates.get_mkt_price_period(tickers_list[3],config.last_12m_dt,period_end_dt)
-        df_historic_12m_4 = cls_df_rates.get_mkt_price_period(tickers_list[4],config.last_12m_dt,period_end_dt)
+        df_historic_12m_0 = cls_df_rates.get_mkt_price_period(tickers_list[0],config_onepager.last_12m_dt,period_end_dt)
+        df_historic_12m_1 = cls_df_rates.get_mkt_price_period(tickers_list[1],config_onepager.last_12m_dt,period_end_dt)
+        df_historic_12m_2 = cls_df_rates.get_mkt_price_period(tickers_list[2],config_onepager.last_12m_dt,period_end_dt)
+        df_historic_12m_3 = cls_df_rates.get_mkt_price_period(tickers_list[3],config_onepager.last_12m_dt,period_end_dt)
+        df_historic_12m_4 = cls_df_rates.get_mkt_price_period(tickers_list[4],config_onepager.last_12m_dt,period_end_dt)
         #df_historic_12m_0.to_csv(f"df_historic_{ticker_show_1}.csv")
 
         average_12M = [ df_historic_12m_0.iloc[:, 0].mean(),
@@ -171,14 +171,14 @@ class CLS_Onepager_report_curve_statistics():
                     df_historic_12m_4['daily_return'].std() * 2.33
                    ]
         
-        config.last_12m_dt = df_historic_12m_0.index.min()
+        config_onepager.last_12m_dt = df_historic_12m_0.index.min()
         ###########################################################################
         
         # Chart
         ###########################################################################
         # For plot
         ###########################################################################
-        curve_spec = config.ir_curves_dict[curve_query][0]
+        curve_spec = config_onepager.ir_curves_dict[curve_query][0]
         tenors_list = []
         rates_list = []
         previous_day_rates_list = []
@@ -216,8 +216,8 @@ class CLS_Onepager_report_curve_statistics():
 
         buffer = io.BytesIO()
 
-        color_plot_curve = config.ir_curves_dict[curve_query][1]
-        color_plot_marker = config.ir_curves_dict[curve_query][1]
+        color_plot_curve = config_onepager.ir_curves_dict[curve_query][1]
+        color_plot_marker = config_onepager.ir_curves_dict[curve_query][1]
 
         fig1, ax1 = plt.subplots(figsize=(6,3.85))
         #fig1, ax1 = plt.subplots(figsize=(6,4.4))
@@ -363,11 +363,11 @@ class CLS_Onepager_report_curve_statistics():
                                             <table class='style_table2'>
                                                 <tr class=''>                 
                                                     <td class='style_table_header'>Statistics 12M</td>
-                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config.last_12m_dt)} -> {ut.format_date(config.today_dt)}'>{str(showtable_tenors[0]) + 'Y'}</div></b></td>
-                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config.last_12m_dt)} -> {ut.format_date(config.today_dt)}'>{str(showtable_tenors[1]) + 'Y'}</div></b></td>
-                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config.last_12m_dt)} -> {ut.format_date(config.today_dt)}'>{str(showtable_tenors[2]) + 'Y'}</div></b></td>
-                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config.last_12m_dt)} -> {ut.format_date(config.today_dt)}'>{str(showtable_tenors[3]) + 'Y'}</div></b></td>
-                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config.last_12m_dt)} -> {ut.format_date(config.today_dt)}'>{str(showtable_tenors[4]) + 'Y'}</div></b></td>
+                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config_onepager.last_12m_dt)} -> {ut.format_date(config_onepager.today_dt)}'>{str(showtable_tenors[0]) + 'Y'}</div></b></td>
+                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config_onepager.last_12m_dt)} -> {ut.format_date(config_onepager.today_dt)}'>{str(showtable_tenors[1]) + 'Y'}</div></b></td>
+                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config_onepager.last_12m_dt)} -> {ut.format_date(config_onepager.today_dt)}'>{str(showtable_tenors[2]) + 'Y'}</div></b></td>
+                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config_onepager.last_12m_dt)} -> {ut.format_date(config_onepager.today_dt)}'>{str(showtable_tenors[3]) + 'Y'}</div></b></td>
+                                                    <td class='style_table_header3'><b><div title='{ut.format_date(config_onepager.last_12m_dt)} -> {ut.format_date(config_onepager.today_dt)}'>{str(showtable_tenors[4]) + 'Y'}</div></b></td>
                                                 </tr>
                                                 <tr class=''>
                                                     <td class='style_table_content'>Median</td>

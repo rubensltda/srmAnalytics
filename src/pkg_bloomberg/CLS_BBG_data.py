@@ -1,4 +1,4 @@
-import pkg_bloomberg.config_module as config
+import pkg_bloomberg.config_module as config_bbg
 import datetime as dt
 import pandas as pd
 from xbbg import blp
@@ -52,14 +52,22 @@ class CLS_BBG_data():
             return self.bbg_data
             
     def save_file_local(self):
-        now = dt.datetime.now()
-        dt_now = now.strftime("%Y-%m-%d %H-%M-%S")
-        self.bbg_data.to_excel(f"{config.path_output_folder}/query_bbg_{dt_now}.xlsx", sheet_name='query_rates')
-        self.bbg_data.to_excel(f"{config.path_output_folder}/query_bbg.xlsx", sheet_name='query_rates')
-
+        try:
+            now = dt.datetime.now()
+            dt_now = now.strftime("%Y-%m-%d %H-%M-%S")
+            self.bbg_data.to_excel(f"{config_bbg.path_output_folder}/query_bbg_{dt_now}.xlsx", sheet_name='query_rates')
+            self.bbg_data.to_excel(f"{config_bbg.path_output_folder}/query_bbg.xlsx", sheet_name='query_rates')
+        except:
+            print("Could not save local file.")
 
     def save_file_remote(self):
-        now = dt.datetime.now()
-        dt_now = now.strftime("%Y-%m-%d %H-%M-%S")
-        self.bbg_data.to_excel(f"{config.path_remote_output_folder}/query_bbg_{dt_now}.xlsx", sheet_name='query_rates')
-        self.bbg_data.to_excel(f"{config.path_remote_output_folder}/query_bbg.xlsx", sheet_name='query_rates')
+        
+        try:
+            now = dt.datetime.now()
+            dt_now = now.strftime("%Y-%m-%d %H-%M-%S")
+            self.bbg_data.to_excel(f"{config_bbg.path_remote_output_folder}/query_bbg_{dt_now}.xlsx", sheet_name='query_rates')
+            self.bbg_data.to_excel(f"{config_bbg.path_remote_output_folder}/query_bbg.xlsx", sheet_name='query_rates')
+        except:
+            print("Couldn't save in remote folder.")
+        
+        

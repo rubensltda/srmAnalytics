@@ -13,9 +13,9 @@ from matplotlib.dates import MonthLocator, DateFormatter
 from matplotlib.ticker import FormatStrFormatter
 from email.mime.image import MIMEImage
 
-import config_module as config
+import pkg_onepager.config_module as config_onepager
 import pkg_common.utils as ut
-import functions_curves as ut_curves
+import pkg_onepager.functions_curves as ut_curves
 
 
 
@@ -31,87 +31,87 @@ class CLS_Onepager_report_curve_tenors():
         #print(f"{asset_show_1} | {asset_show_2}")
         print(f"Generating single curve report: {curve_query}")
         
-        date0 = config.today_dt
-        date1 = config.previous_dt
-        date2 = config.last_EOQ_dt
+        date0 = config_onepager.today_dt
+        date1 = config_onepager.previous_dt
+        date2 = config_onepager.last_EOQ_dt
         
-        # tickers_list = [ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve1, showtable_tenors[0]),
-        #                 ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve1, showtable_tenors[1]),
-        #                 ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve1, showtable_tenors[2]),
-        #                 ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve1, showtable_tenors[3]),
-        #                 ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve1, showtable_tenors[4])
+        # tickers_list = [ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve1, showtable_tenors[0]),
+        #                 ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve1, showtable_tenors[1]),
+        #                 ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve1, showtable_tenors[2]),
+        #                 ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve1, showtable_tenors[3]),
+        #                 ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve1, showtable_tenors[4])
         #                 ]
         # #print(tickers_list)
         
-        # today_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.today_dt),
-        #              cls_df_rates.get_mkt_price(tickers_list[1],config.today_dt),
-        #              cls_df_rates.get_mkt_price(tickers_list[2],config.today_dt),
-        #              cls_df_rates.get_mkt_price(tickers_list[3],config.today_dt),
-        #              cls_df_rates.get_mkt_price(tickers_list[4],config.today_dt)
+        # today_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.today_dt),
+        #              cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.today_dt),
+        #              cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.today_dt),
+        #              cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.today_dt),
+        #              cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.today_dt)
         #              ]
         # #print(today_px)        
 
-        # previous_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.previous_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[1],config.previous_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[2],config.previous_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[3],config.previous_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[4],config.previous_dt)
+        # previous_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.previous_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.previous_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.previous_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.previous_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.previous_dt)
         #              ]
         # #print(previous_px)        
 
-        # last_EOW_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_EOW_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[1],config.last_EOW_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[2],config.last_EOW_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[3],config.last_EOW_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[4],config.last_EOW_dt)
+        # last_EOW_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_EOW_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_EOW_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_EOW_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_EOW_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_EOW_dt)
         #              ]
         # #print(last_EOW_px)        
 
-        # last_EOM_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_EOM_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[1],config.last_EOM_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[2],config.last_EOM_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[3],config.last_EOM_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[4],config.last_EOM_dt)
+        # last_EOM_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_EOM_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_EOM_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_EOM_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_EOM_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_EOM_dt)
         #         ]
         # #print(last_EOM_px)        
 
-        # last_EOQ_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_EOQ_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[1],config.last_EOQ_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[2],config.last_EOQ_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[3],config.last_EOQ_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[4],config.last_EOQ_dt)
+        # last_EOQ_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_EOQ_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_EOQ_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_EOQ_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_EOQ_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_EOQ_dt)
         #         ]
         # #print(last_EOQ_px)        
         
-        # last_EOY_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_EOY_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[1],config.last_EOY_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[2],config.last_EOY_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[3],config.last_EOY_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[4],config.last_EOY_dt)
+        # last_EOY_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_EOY_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_EOY_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_EOY_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_EOY_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_EOY_dt)
         #         ]
         # #print(last_EOY_px)        
 
-        # last_1m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_1m_dt),
-        #                cls_df_rates.get_mkt_price(tickers_list[1],config.last_1m_dt),
-        #                cls_df_rates.get_mkt_price(tickers_list[2],config.last_1m_dt),
-        #                cls_df_rates.get_mkt_price(tickers_list[3],config.last_1m_dt),
-        #                cls_df_rates.get_mkt_price(tickers_list[4],config.last_1m_dt)
+        # last_1m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_1m_dt),
+        #                cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_1m_dt),
+        #                cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_1m_dt),
+        #                cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_1m_dt),
+        #                cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_1m_dt)
         #         ]
         # #print(last_1m_px)        
 
-        # last_3m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_3m_dt),
-        #                cls_df_rates.get_mkt_price(tickers_list[1],config.last_3m_dt),
-        #                cls_df_rates.get_mkt_price(tickers_list[2],config.last_3m_dt),
-        #                cls_df_rates.get_mkt_price(tickers_list[3],config.last_3m_dt),
-        #                cls_df_rates.get_mkt_price(tickers_list[4],config.last_3m_dt)
+        # last_3m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_3m_dt),
+        #                cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_3m_dt),
+        #                cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_3m_dt),
+        #                cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_3m_dt),
+        #                cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_3m_dt)
         #         ]
         # #print(last_3m_px)        
 
-        # last_12m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config.last_12m_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[1],config.last_12m_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[2],config.last_12m_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[3],config.last_12m_dt),
-        #                 cls_df_rates.get_mkt_price(tickers_list[4],config.last_12m_dt)
+        # last_12m_px =  [cls_df_rates.get_mkt_price(tickers_list[0],config_onepager.last_12m_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[1],config_onepager.last_12m_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[2],config_onepager.last_12m_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[3],config_onepager.last_12m_dt),
+        #                 cls_df_rates.get_mkt_price(tickers_list[4],config_onepager.last_12m_dt)
         #         ]
         # #print(last_12m_px)        
         
@@ -121,7 +121,7 @@ class CLS_Onepager_report_curve_tenors():
         ###########################################################################
         # For plot
         ###########################################################################
-        curve_spec = config.ir_curves_dict[curve_query][0]
+        curve_spec = config_onepager.ir_curves_dict[curve_query][0]
         tenors_list = []
         tickers_list = []
         rates_list = []
@@ -132,7 +132,7 @@ class CLS_Onepager_report_curve_tenors():
             tenors_list.append(tenor[0])
             tickers_list.append(tenor[1])
             
-            tenor_rate = cls_df_rates.get_mkt_price(tenor[1],config.today_dt)
+            tenor_rate = cls_df_rates.get_mkt_price(tenor[1],config_onepager.today_dt)
             rates_list.append(tenor_rate[1])
             
             tenor_rate_previous_day = cls_df_rates.get_mkt_price(tenor[1],date1)
@@ -165,8 +165,8 @@ class CLS_Onepager_report_curve_tenors():
 
         buffer = io.BytesIO()
 
-        color_plot_curve = config.ir_curves_dict[curve_query][1]
-        color_plot_marker = config.ir_curves_dict[curve_query][1]
+        color_plot_curve = config_onepager.ir_curves_dict[curve_query][1]
+        color_plot_marker = config_onepager.ir_curves_dict[curve_query][1]
 
         fig1, ax1 = plt.subplots(figsize=(6,3.85))
         ax1.plot(x_rates_interpolated, y_rates_interpolated, '-', color=color_plot_curve)
@@ -240,7 +240,7 @@ class CLS_Onepager_report_curve_tenors():
             else:
                 tenor_label = str(tenor) + 'Y'
             
-            curve_ticker = ut_curves.find_ticker_curve_by_tenor(config.ir_curves_dict, curve_query, tenor)
+            curve_ticker = ut_curves.find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, curve_query, tenor)
             rate_today = cls_df_rates.get_mkt_price(curve_ticker,date0)[1]
             rate_date1 = cls_df_rates.get_mkt_price(curve_ticker,date1)[1]
             rate_date2 = cls_df_rates.get_mkt_price(curve_ticker,date2)[1]

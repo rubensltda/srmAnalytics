@@ -3,9 +3,10 @@
 # enviar do email BID: 
 # criar usuario generico / lista distribuicao
 # criar thread para mandar email
+# deploy in BBG machine
+# rotina para nao deixar bloomberg deslogar
 # crirar metodo mais rapido para serie shiftada
 # percentile in curves statistics
-# deploy in BBG machine
 # criar e mostrar series SOFR 5bd e 15bg (according to NSG ALCO material)
 # github secure
 # cortando final do italico: faltando espaco na coluna? ou colocar gif na funcao utils?
@@ -20,14 +21,15 @@
 # pip install matplotlib
 # pip install openpyxl
 # pip install scipy (for interpolation)
+# pip install schedule
 # -----------------------------------------------------------------------
 
 
 # Needed for importing parent folder
 # -----------------------------------------------------------------------
-import os, sys
-sys.path.insert(1, os.path.abspath('./src'))
-#print(os.path.abspath('.'))
+# import os, sys
+# sys.path.insert(1, os.path.abspath('./src'))
+# print(os.path.abspath('.'))
 # -----------------------------------------------------------------------
 import datetime as dt
 import pkg_common.utils as ut
@@ -38,7 +40,7 @@ def initialize():
     #Dates variables
     #--------------------------------------------------------------------------------------------------------
     global today_dt;           today_dt = dt.date.today()
-    #global today_dt;            today_dt = dt.date(2022, 10, 18) # for testing             
+    #global today_dt;            today_dt = dt.date(2022, 10, 21) # for testing             
     
     global this_EOQ_dt;         this_EOQ_dt = ut.find_quarter_end(today_dt)
     global previous_dt;         previous_dt = ut.find_previous_day(today_dt)
@@ -58,18 +60,16 @@ def initialize():
     
     #Email config
     #--------------------------------------------------------------------------------------------------------
-    # global email_sender;        email_sender = "markets.reporting@gmail.com"
-    # global email_pwd;           email_pwd = "fdqhwgnejqydpzej"
+    global send_email_flag;      send_email_flag = True
+    #global send_email_flag;       send_email_flag = False
     
-    #global email_receiver;      email_receiver = ["markets.reporting@gmail.com"]
-    #global email_receiver;      email_receiver = ['rubensh@iadb.org']
-    global email_receiver;      email_receiver = ["sylviag@iadb.org","rubensh@iadb.org"]
+    #global send_email_idb;        send_email_idb = True
+    global send_email_idb;        send_email_idb = False
     
-    global email_subject;       email_subject = ''
-    
-    global send_email_flag;     send_email_flag = True
-    #global send_email_flag;     send_email_flag = False
-    
+    global email_distribution_list;       email_distribution_list = ["markets.reporting@gmail.com"]
+    #global email_distribution_list;       email_distribution_list = ["markets.reporting@gmail.com", 'rubensltda@gmail.com']
+    #global email_distribution_list;      email_distribution_list = ['rubensh@iadb.org']
+    #global email_distribution_list;      email_distribution_list = ["sylviag@iadb.org","rubensh@iadb.org"]
     
 
     #Assets and groups dictionaries

@@ -9,7 +9,7 @@ from matplotlib.ticker import FormatStrFormatter
 from email.mime.image import MIMEImage
 import datetime as dt
 
-import config_module as config
+import pkg_onepager.config_module as config_onepager
 import pkg_common.utils as ut
 
 
@@ -22,7 +22,7 @@ class CLS_Onepager_report_asset():
         
     def generate_html_asset_summary(self, cls_df_rates, asset_query, long_period=False):
         
-        asset_info = config.assets_dict[asset_query]
+        asset_info = config_onepager.assets_dict[asset_query]
         ticker_query = asset_info[0]
         ticker_quote_type = asset_info[1]
         ticker_plot_color = asset_info[2]
@@ -33,27 +33,27 @@ class CLS_Onepager_report_asset():
         
         # historical data
         ###########################################################################
-        today_px = cls_df_rates.get_mkt_price(ticker_query,config.today_dt)
-        previous_px = cls_df_rates.get_mkt_price(ticker_query,config.previous_dt)
-        last_EOW_px = cls_df_rates.get_mkt_price(ticker_query,config.last_EOW_dt)
-        last_EOM_px = cls_df_rates.get_mkt_price(ticker_query,config.last_EOM_dt)
-        last_EOQ_px = cls_df_rates.get_mkt_price(ticker_query,config.last_EOQ_dt)
-        last_EOY_px = cls_df_rates.get_mkt_price(ticker_query,config.last_EOY_dt)
+        today_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.today_dt)
+        previous_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.previous_dt)
+        last_EOW_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_EOW_dt)
+        last_EOM_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_EOM_dt)
+        last_EOQ_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_EOQ_dt)
+        last_EOY_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_EOY_dt)
         
         if long_period == True:
             last_period1 = '1-year'
-            last_period1_px = cls_df_rates.get_mkt_price(ticker_query,config.last_12m_dt)
+            last_period1_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_12m_dt)
             last_period2 = '5-years'
-            last_period2_px = cls_df_rates.get_mkt_price(ticker_query,config.last_5y_dt)
+            last_period2_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_5y_dt)
             last_period3 = '10-years'
-            last_period3_px = cls_df_rates.get_mkt_price(ticker_query,config.last_10y_dt)
+            last_period3_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_10y_dt)
         else:
             last_period1 = '1-month'
-            last_period1_px = cls_df_rates.get_mkt_price(ticker_query,config.last_1m_dt)
+            last_period1_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_1m_dt)
             last_period2 = '3-months'
-            last_period2_px = cls_df_rates.get_mkt_price(ticker_query,config.last_3m_dt)
+            last_period2_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_3m_dt)
             last_period3 = '12-months'
-            last_period3_px = cls_df_rates.get_mkt_price(ticker_query,config.last_12m_dt)
+            last_period3_px = cls_df_rates.get_mkt_price(ticker_query,config_onepager.last_12m_dt)
         
         if 'RATE' in ticker_quote_type.upper():
             previous_spread = ut.calculate_change(today_px[1],previous_px[1])
@@ -79,21 +79,21 @@ class CLS_Onepager_report_asset():
         # Statistics
         ###########################################################################
         if long_period == True:
-            #period_start_dt = config.last_10y_dt
-            period_start_dt = dt.date(config.last_10y_dt.year, 1, 1)
+            #period_start_dt = config_onepager.last_10y_dt
+            period_start_dt = dt.date(config_onepager.last_10y_dt.year, 1, 1)
             period_stats_1 = '5-years'
             period_stats_2 = '10-years'
-            period_start_stats1_dt = config.last_5y_dt
-            period_start_stats2_dt = config.last_10y_dt
+            period_start_stats1_dt = config_onepager.last_5y_dt
+            period_start_stats2_dt = config_onepager.last_10y_dt
 
         else:
-            period_start_dt = config.last_EOQ_back8_dt
+            period_start_dt = config_onepager.last_EOQ_back8_dt
             period_stats_1 = '3-months'
             period_stats_2 = '12-months'
-            period_start_stats1_dt = config.last_3m_dt
-            period_start_stats2_dt = config.last_12m_dt
+            period_start_stats1_dt = config_onepager.last_3m_dt
+            period_start_stats2_dt = config_onepager.last_12m_dt
 
-        period_end_dt = config.today_dt
+        period_end_dt = config_onepager.today_dt
 
         df_historic = cls_df_rates.get_mkt_price_period(ticker_query,period_start_dt,period_end_dt)
         #df_historic.to_csv(f"df_historic_{ticker_query}.csv")
@@ -103,7 +103,7 @@ class CLS_Onepager_report_asset():
         median_p1 = df_historic_p1.iloc[:, 0].median()
         min_p1 = df_historic_p1.iloc[:, 0].min()
         max_p1 = df_historic_p1.iloc[:, 0].max()
-        config.last_p1_dt = df_historic_p1.index.min()
+        config_onepager.last_p1_dt = df_historic_p1.index.min()
         
         df_historic_p1['daily_return'] = df_historic_p1.iloc[:, 0] - df_historic_p1.iloc[:, 0].shift(1)
         #vol_1d_p1 = df_historic_p1['daily_return'].std() * 2.33
@@ -115,7 +115,7 @@ class CLS_Onepager_report_asset():
         median_p2 = df_historic_p2.iloc[:, 0].median()
         min_p2 = df_historic_p2.iloc[:, 0].min()
         max_p2 = df_historic_p2.iloc[:, 0].max()
-        config.last_p2_dt = df_historic_p2.index.min()
+        config_onepager.last_p2_dt = df_historic_p2.index.min()
         
         df_historic_p2['daily_return'] = df_historic_p2.iloc[:, 0] - df_historic_p2.iloc[:, 0].shift(1)
         #vol_1d_p2 = df_historic_p2['daily_return'].std() * 2.33
@@ -135,13 +135,13 @@ class CLS_Onepager_report_asset():
             plot_ticks = YearLocator(month=1,day=1)
             plot_ticks_format = DateFormatter('%Y')
             ax1.set_xlim(xmin=(period_start_dt - dt.timedelta(days=2)))
-            ax1.set_xlim(xmax=(config.next_EOY_dt + dt.timedelta(days=1)))
+            ax1.set_xlim(xmax=(config_onepager.next_EOY_dt + dt.timedelta(days=1)))
             img_space = "<img src='data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAAXNSR0IArs4c6QAAAA1JREFUGFdj+P///38ACfsD/QVDRcoAAAAASUVORK5CYII=' width='5px' height='1px'>"
         else:
             plot_ticks = MonthLocator((3,6,9,12),bymonthday=-1)
             plot_ticks_format = DateFormatter('%b%y')
             ax1.set_xlim(xmin=period_start_dt)
-            ax1.set_xlim(xmax=config.this_EOQ_dt)
+            ax1.set_xlim(xmax=config_onepager.this_EOQ_dt)
             img_space = ''
         
         #plot_ticks = MonthLocator(interval=3,bymonthday=-1)

@@ -1,16 +1,17 @@
+import os, sys
+sys.path.insert(1, os.path.abspath('./src'))
+import pkg_onepager.config_module as config_onepager
+
 import datetime as dt
-
-
-import config_module as config
 import pkg_common.utils as ut
 from pkg_bloomberg.CLS_Mkt_data import CLS_Mkt_data
-from CLS_Msg_HTML import CLS_Msg_HTML
-from CLS_Onepager_common import CLS_Onepager_common
-from CLS_Onepager_report_asset_single import CLS_Onepager_report_asset
-from CLS_Onepager_report_asset_group import CLS_Onepager_report_group
-from CLS_Onepager_report_curve_single_tenors import CLS_Onepager_report_curve_tenors
-from CLS_Onepager_report_curve_single_statistics import CLS_Onepager_report_curve_statistics
-from CLS_Onepager_report_curve_comparison import CLS_Onepager_report_curve_comparison
+from pkg_email.CLS_Msg_HTML import CLS_Msg_HTML
+from pkg_onepager.CLS_Onepager_common import CLS_Onepager_common
+from pkg_onepager.CLS_Onepager_report_asset_single import CLS_Onepager_report_asset
+from pkg_onepager.CLS_Onepager_report_asset_group import CLS_Onepager_report_group
+from pkg_onepager.CLS_Onepager_report_curve_single_tenors import CLS_Onepager_report_curve_tenors
+from pkg_onepager.CLS_Onepager_report_curve_single_statistics import CLS_Onepager_report_curve_statistics
+from pkg_onepager.CLS_Onepager_report_curve_comparison import CLS_Onepager_report_curve_comparison
 
 
 def run_report_miscellaneous():
@@ -27,8 +28,11 @@ def run_report_miscellaneous():
 
     # Initiate message class
     ##################################################################
-    config.email_subject = '[SRM Analytics] Markets Monitor | Miscellaneous | ' + ut.format_date(config.today_dt)
+    #config_onepager.email_subject = '[SRM Analytics] Markets Monitor | Miscellaneous | ' + ut.format_date(config_onepager.today_dt)
+    msg_title = '[SRM Analytics] Markets Monitor | Miscellaneous | ' + ut.format_date(config_onepager.today_dt)
     message = CLS_Msg_HTML()
+    message.set_subject(msg_title)
+    message.set_receiver(config_onepager.email_distribution_list)
 
     # Initiate report class
     ##################################################################
@@ -40,7 +44,7 @@ def run_report_miscellaneous():
     report_curve_statistics = CLS_Onepager_report_curve_statistics()
     report_curves = CLS_Onepager_report_curve_comparison()
 
-    message.add_content_html(report_common.generate_html_header())
+    message.add_content_html(report_common.generate_html_header(msg_title))
 
     message.add_content_html(f"<h3 style='background-color:powderblue;'>Chart of the week</h3>")
     message.add_content_html(report_asset.generate_html_asset_summary(mkt_data, "JPY/USD",long_period=True) )
@@ -88,9 +92,11 @@ def run_report_miscellaneous():
 
     message.save_html_file()
 
-    if config.send_email_flag == True:
-        #message.send_email_gmail()
-        message.send_email_idb()
+    if config_onepager.send_email_flag == True:
+        if config_onepager.send_email_idb == True:
+            message.send_email_idb()
+        else:
+            message.send_email_gmail()
 
     print("End processing...")
     
@@ -98,5 +104,5 @@ def run_report_miscellaneous():
 ########################################################################################################################################################################
 ########################################################################################################################################################################
 if __name__ == "__main__":
-    config.initialize()
+    config_onepager.initialize()
     run_report_miscellaneous()

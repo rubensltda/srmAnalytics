@@ -1,0 +1,7 @@
+{
+    "python.analysis.extraPaths": [
+        "./src/pkg_onepager",
+        "./src/pkg_common",
+        "./src/pkg_bloomberg"
+    ]
+}

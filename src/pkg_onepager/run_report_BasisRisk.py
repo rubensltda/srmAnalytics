@@ -1,13 +1,16 @@
-import datetime as dt
+import os, sys
+sys.path.insert(1, os.path.abspath('./src'))
+import pkg_onepager.config_module as config_onepager
 
-import config_module as config
+
+import datetime as dt
 import pkg_common.utils as ut
 from pkg_bloomberg.CLS_Mkt_data import CLS_Mkt_data
-from CLS_Msg_HTML import CLS_Msg_HTML
-from CLS_Onepager_common import CLS_Onepager_common
-from CLS_Onepager_report_asset_single import CLS_Onepager_report_asset
-from CLS_Onepager_report_asset_group import CLS_Onepager_report_group
-from CLS_Onepager_report_summary_basis import CLS_Onepager_report_summary_basis
+from pkg_email.CLS_Msg_HTML import CLS_Msg_HTML
+from pkg_onepager.CLS_Onepager_common import CLS_Onepager_common
+from pkg_onepager.CLS_Onepager_report_asset_single import CLS_Onepager_report_asset
+from pkg_onepager.CLS_Onepager_report_asset_group import CLS_Onepager_report_group
+from pkg_onepager.CLS_Onepager_report_summary_basis import CLS_Onepager_report_summary_basis
 
 def run_report_BasisRisk():
 
@@ -23,8 +26,11 @@ def run_report_BasisRisk():
 
     # Initiate message class
     ##################################################################
-    config.email_subject = '[SRM Analytics] Markets Monitor | Basis Risk | ' + ut.format_date(config.today_dt)
+    #config_onepager.email_subject = '[SRM Analytics] Markets Monitor | Basis Risk | ' + ut.format_date(config_onepager.today_dt)
+    msg_title = '[SRM Analytics] Markets Monitor | Basis Risk | ' + ut.format_date(config_onepager.today_dt)
     message = CLS_Msg_HTML()
+    message.set_subject(msg_title)
+    message.set_receiver(config_onepager.email_distribution_list)
 
     # Initiate report class
     ##################################################################
@@ -33,7 +39,7 @@ def run_report_BasisRisk():
     report_group = CLS_Onepager_report_group()
     report_summary = CLS_Onepager_report_summary_basis()
 
-    message.add_content_html(report_common.generate_html_header())
+    message.add_content_html(report_common.generate_html_header(msg_title))
 
     message.add_content_html(report_summary.generate_html_summary_basis(mkt_data) )
     
@@ -69,9 +75,11 @@ def run_report_BasisRisk():
 
     message.save_html_file()
 
-    if config.send_email_flag == True:
-        #message.send_email_gmail()
-        message.send_email_idb()
+    if config_onepager.send_email_flag == True:
+        if config_onepager.send_email_idb == True:
+            message.send_email_idb()
+        else:
+            message.send_email_gmail()
 
     print("End processing...")
     
@@ -79,5 +87,5 @@ def run_report_BasisRisk():
 ########################################################################################################################################################################
 ########################################################################################################################################################################
 if __name__ == "__main__":
-    config.initialize()
+    config_onepager.initialize()
     run_report_BasisRisk()

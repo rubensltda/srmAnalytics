@@ -1,5 +1,5 @@
-# import config_module as config
-# config.initialize()
+# import pkg_onepager.config_module as config_onepager
+# config_onepager.initialize()
 
 def find_ticker_curve_by_tenor(curves_dict, curve_find, tenor_find):
     curve_ticker_list = curves_dict[curve_find][0]
@@ -24,8 +24,8 @@ def find_ticker_curve_by_tenor(curves_dict, curve_find, tenor_find):
 
 # for testing
 #######################################################################################
-# ticker = find_ticker_curve_by_tenor(config.ir_curves_dict, "Libor curve", 10)
-# ticker = find_ticker_curve_by_tenor(config.ir_curves_dict, "SOFR curve", 2)
+# ticker = find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, "Libor curve", 10)
+# ticker = find_ticker_curve_by_tenor(config_onepager.ir_curves_dict, "SOFR curve", 2)
 # print(ticker)
 
 
