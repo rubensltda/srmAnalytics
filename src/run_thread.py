@@ -9,6 +9,7 @@ from pkg_onepager.run_reports import run_reports
 today_dt = dt.date.today() 
 today_wd = today_dt.weekday()
 
+today_wd = 4
 
 def get_bbg_data():
     if (today_wd == 5 or today_wd == 6):
@@ -28,8 +29,8 @@ def generate_reports():
         run_reports()
 
 
-schedule.every().day.at("17:15:00").do(get_bbg_data)
-schedule.every().day.at("17:29:00").do(generate_reports)
+schedule.every().day.at("10:23:00").do(get_bbg_data)
+schedule.every().day.at("10:25:00").do(generate_reports)
 
 
 now = dt.datetime.now().strftime("%Y-%m-%d %H.%M.%S")

@@ -16,7 +16,7 @@ from pkg_onepager.CLS_Onepager_report_curve_comparison import CLS_Onepager_repor
 
 def run_report_miscellaneous():
 
-    print("Start processing...")
+    print("Start processing Miscellaneous report...")
 
     # Initiate Market Data
     ##################################################################

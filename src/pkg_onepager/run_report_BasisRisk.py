@@ -14,7 +14,7 @@ from pkg_onepager.CLS_Onepager_report_summary_basis import CLS_Onepager_report_s
 
 def run_report_BasisRisk():
 
-    print("Start processing...")
+    print("Start processing Basis Risk report...")
 
     # Initiate Market Data
     ##################################################################
