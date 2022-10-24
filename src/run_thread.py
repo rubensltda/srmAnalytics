@@ -6,10 +6,6 @@ from pkg_bloomberg.run_bbg_query import run_bbg_query
 from pkg_onepager.run_reports import run_reports
 
 
-
-
-
-
 def get_bbg_data():
     today_dt = dt.date.today() 
     today_wd = today_dt.weekday()
