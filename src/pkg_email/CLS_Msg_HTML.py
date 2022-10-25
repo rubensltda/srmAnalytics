@@ -29,7 +29,7 @@ class CLS_Msg_HTML():
     
     def set_receiver(self, txt_receiver):
         self.receiver_email = txt_receiver
-        self.message['To'] = ', '.join(txt_receiver)
+        self.message['To'] = ','.join(txt_receiver)
 
     
     def add_content_html(self, content_html_to_add):
