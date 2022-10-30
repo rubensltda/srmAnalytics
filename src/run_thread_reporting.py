@@ -6,12 +6,10 @@ from pkg_bloomberg.run_bbg_query import run_bbg_query
 from pkg_onepager.run_reports import run_reports
 
 
-today_dt = dt.date.today() 
-today_wd = today_dt.weekday()
-
-today_wd = 4
-
 def get_bbg_data():
+    today_dt = dt.date.today() 
+    today_wd = today_dt.weekday()
+    #today_wd = 4
     if (today_wd == 5 or today_wd == 6):
         print(f"Weekend, not run bloomberg.")
     else:
@@ -21,6 +19,9 @@ def get_bbg_data():
 
 
 def generate_reports():
+    today_dt = dt.date.today() 
+    today_wd = today_dt.weekday()
+    #today_wd = 4
     if (today_wd == 5 or today_wd == 6):
         print(f"Weekend, not run reports.")
     else:

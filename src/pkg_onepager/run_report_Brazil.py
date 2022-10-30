@@ -35,8 +35,13 @@ def run_report_Brazil():
     message = CLS_Msg_HTML()
     message.set_subject(msg_title)
     #message.set_receiver(config_onepager.email_distribution_list)
+<<<<<<< HEAD
     #message.set_receiver(["rubensh@iadb.org"])
     message.set_receiver(["rubensh@iadb.org"])
+=======
+    message.set_receiver(["rubensh@iadb.org"])
+    #message.set_receiver(["markets.reporting@gmail.com"])
+>>>>>>> b6a87a0002cf7cac0a362a5be5b04232c3451ff3
 
     
     # Initiate report class
