@@ -2,8 +2,8 @@ import time
 import random
 from pynput.keyboard import Key, Controller
 import win32gui
+import win32com.client
 import datetime as dt
-
 #from notebooks.bloomberg_keep_alive import get_app_list
 
 class BBG_terminal():
@@ -42,6 +42,11 @@ class BBG_terminal():
                     self.bbg_window_id = window[0]
 
         if found_window == True:
+            # the next 2 lines are only necessary in BBg laptop
+            #####################################################
+            shell = win32com.client.Dispatch("WScript.Shell")
+            shell.SendKeys('%')
+            #####################################################
             win32gui.SetForegroundWindow(self.bbg_window_id)
         
         
