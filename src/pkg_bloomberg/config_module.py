@@ -3,7 +3,6 @@
 # pip install --index-url=https://bcms.bloomberg.com/pip/simple blpapi
 # pip install xbbg
 # pip install pynput
-# pip install win32gui
 # -----------------------------------------------------------------------
 
 # Documentation
