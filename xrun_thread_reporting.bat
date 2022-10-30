@@ -5,7 +5,7 @@ set venv_root_dir=%UserProfile%\local\srmAnalytics\venv
 
 call %venv_root_dir%\Scripts\activate.bat
 
-python src/run_thread.py
+python src/run_thread_reporting.py
 
 call %venv_root_dir%\Scripts\deactivate.bat
 cd %original_dir%
