@@ -32,7 +32,7 @@ def run_report_USrates():
     message = CLS_Msg_HTML()
     message.set_subject(msg_title)
     #message.set_receiver(config_onepager.email_distribution_list)
-    message.set_receiver(config_onepager.email_general_distribution_list)
+    message.set_receiver(config_onepager.email_distribution_list)
     
 
     # Initiate report class

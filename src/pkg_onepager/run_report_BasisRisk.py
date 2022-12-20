@@ -30,7 +30,7 @@ def run_report_BasisRisk():
     msg_title = '[SRM Analytics] Markets Monitor | Basis Risk | ' + ut.format_date(config_onepager.today_dt)
     message = CLS_Msg_HTML()
     message.set_subject(msg_title)
-    message.set_receiver(config_onepager.email_distribution_list)
+    message.set_receiver(config_onepager.email_internal_srm_list)
 
     # Initiate report class
     ##################################################################
@@ -41,7 +41,7 @@ def run_report_BasisRisk():
 
     message.add_content_html(report_common.generate_html_header(msg_title))
 
-    message.add_content_html(report_summary.generate_html_summary_basis(mkt_data) )
+    # message.add_content_html(report_summary.generate_html_summary_basis(mkt_data) )
     
     message.add_content_html(report_group.generate_html_group_summary(mkt_data, "Risk-free rates" , showtable=[0,1]) )
     message.add_content_html(report_group.generate_html_group_summary(mkt_data, "SOFR Average" , showtable=[0,1]) )

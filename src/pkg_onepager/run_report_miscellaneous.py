@@ -32,7 +32,7 @@ def run_report_miscellaneous():
     msg_title = '[SRM Analytics] Markets Monitor | Miscellaneous | ' + ut.format_date(config_onepager.today_dt)
     message = CLS_Msg_HTML()
     message.set_subject(msg_title)
-    message.set_receiver(config_onepager.email_distribution_list)
+    message.set_receiver(config_onepager.email_internal_srm_list)
 
     # Initiate report class
     ##################################################################

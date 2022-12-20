@@ -9,6 +9,8 @@ from pkg_onepager.run_report_BasisRisk import run_report_BasisRisk
 from pkg_onepager.run_report_Brazil import run_report_Brazil
 from pkg_onepager.run_report_USrates import run_report_USrates
 from pkg_onepager.run_report_miscellaneous import run_report_miscellaneous
+from pkg_onepager.run_report_RiskMonitoring import run_report_RiskMonitoring
+
 
 
 def run_reports():
@@ -37,11 +39,13 @@ def run_reports():
             run_report_BasisRisk()
             run_report_USrates()
             run_report_Brazil()
+            run_report_RiskMonitoring()
 
         elif (today_wd == 4):
             run_report_BasisRisk()
             run_report_USrates()
             run_report_Brazil()
+            run_report_RiskMonitoring()
             run_report_miscellaneous()
         
         mkt_data.export_data_csv()
