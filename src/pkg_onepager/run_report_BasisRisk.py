@@ -31,8 +31,6 @@ def run_report_BasisRisk():
     message = CLS_Msg_HTML()
     message.set_subject(msg_title)
     message.set_receiver(config_onepager.email_internal_srm_list)
-    ### Commit
-
 
     # Initiate report class
     ##################################################################
