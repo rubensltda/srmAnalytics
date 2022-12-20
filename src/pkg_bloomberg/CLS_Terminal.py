@@ -73,19 +73,20 @@ class BBG_terminal():
 
             # Send command to bloomberg
             #####################################################
-            time.sleep(10)
-            keyboard.type(command)
-            time.sleep(3)
-            keyboard.press(Key.enter)
-            keyboard.release(Key.enter)
+            # time.sleep(10)
+            # keyboard.type(command)
+            # time.sleep(3)
+            # keyboard.press(Key.enter)
+            # keyboard.release(Key.enter)
             # Alternative to send character by character
             #####################################################
-            # command_chars = [*command]
-            # print(command_list)
-            # for c in command_chars:
-            #     time.sleep(random.randint(1,3))
-            #     keyboard.type(c)
-                    
+            command_chars = [*command]
+            #print(command_list)
+            for c in command_chars:
+                time.sleep(random.randint(1,3))
+                keyboard.type(c)
+            keyboard.press(Key.enter)
+            keyboard.release(Key.enter)
             
             # Close tab
             #####################################################

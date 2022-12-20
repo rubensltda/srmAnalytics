@@ -39,8 +39,8 @@ def initialize():
     
     #Dates variables
     #--------------------------------------------------------------------------------------------------------
-    #global today_dt;           today_dt = dt.date.today()
-    global today_dt;            today_dt = dt.date(2022, 10, 27) # for testing             
+    global today_dt;           today_dt = dt.date.today()
+    #global today_dt;            today_dt = dt.date(2022, 10, 27) # for testing             
     
     global this_EOQ_dt;         this_EOQ_dt = ut.find_quarter_end(today_dt)
     global previous_dt;         previous_dt = ut.find_previous_day(today_dt)
@@ -63,13 +63,14 @@ def initialize():
     global send_email_flag;      send_email_flag = True
     #global send_email_flag;       send_email_flag = False
     
-    #global send_email_idb;        send_email_idb = True
-    global send_email_idb;        send_email_idb = False
+    global send_email_idb;        send_email_idb = True
+    #global send_email_idb;        send_email_idb = False
     
     #global email_distribution_list;       email_distribution_list = ["markets.reporting@gmail.com"]
     #global email_distribution_list;       email_distribution_list = ["markets.reporting@gmail.com", 'rubensltda@gmail.com']
-    global email_distribution_list;      email_distribution_list = ['bloomrmp@iadb.org','rubensh@iadb.org']
-    #global email_distribution_list;      email_distribution_list = ["sylviag@iadb.org","rubensh@iadb.org"]
+    #global email_distribution_list;      email_distribution_list = ['bloomrmp@iadb.org','rubensh@iadb.org']
+    global email_distribution_list;             email_distribution_list = ["sylviag@iadb.org","rubensh@iadb.org"]
+    global email_general_distribution_list;     email_general_distribution_list = ["sylviag@iadb.org","rubensh@iadb.org","fruizgarcia@iadb.org","pbravoleon@iadb.org","fin-alm@iadb.org"]
     
 
     #Assets and groups dictionaries

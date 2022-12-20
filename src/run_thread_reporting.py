@@ -30,8 +30,8 @@ def generate_reports():
         run_reports()
 
 
-schedule.every().day.at("10:23:00").do(get_bbg_data)
-schedule.every().day.at("10:25:00").do(generate_reports)
+schedule.every().day.at("17:40:00").do(get_bbg_data)
+schedule.every().day.at("17:49:00").do(generate_reports)
 
 
 now = dt.datetime.now().strftime("%Y-%m-%d %H.%M.%S")
