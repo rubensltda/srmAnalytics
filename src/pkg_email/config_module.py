@@ -23,5 +23,5 @@ sys.path.insert(1, os.path.abspath('./src'))
 #--------------------------------------------------------------------------------------------------------
 global path_output_folder;              path_output_folder = 'output'    
 global path_remote_output_folder;       path_remote_output_folder = '//finnt11/qrm/Bloomberg'
-# teste git
+# teste git2
 
