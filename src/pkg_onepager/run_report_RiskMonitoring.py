@@ -46,11 +46,11 @@ def run_report_RiskMonitoring():
     # MTM Volatility
     message.add_content_html(f"<h3 style='background-color:powderblue;'>MTM Volatility</h3>")
 
-    message.add_content_html(f"<font class='style_title'>Structural Hedging - Swaps</class><hr>")
+    message.add_content_html(f"<font class='style_title'>Structural Hedging - Swaps</font><hr>")
     KRD_FV_SH = [14951, -650363 , -589989, -781541, -495277, -642452, -1480356, -718782, -964567, -930069, 704659, 748617, 720619, 657547, 603358, 544003, 503269, 443256, -387657, -593470, 679948, 4669802]
     message.add_content_html(report_mtm.generate_html_mtm_volatility(mkt_data,KRD_FV_SH) )
     
-    message.add_content_html(f"<font class='style_title'>Balance Sheet - Fair Value Accounts</class><hr>")
+    message.add_content_html(f"<font class='style_title'>Balance Sheet - Fair Value Accounts</font><hr>")
     KRD_FV = [-192119,-677349,-531996,-761756, -790058, -138413, -848586, -922349, -1073037, -145584, 1199465, 1041222, 954095, 883523, 803439, 675947, 535045, 458041, -398102 , -580879, 680909, 4663367]
     message.add_content_html(report_mtm.generate_html_mtm_volatility(mkt_data,KRD_FV) )
     

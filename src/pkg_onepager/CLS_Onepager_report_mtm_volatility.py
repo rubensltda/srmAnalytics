@@ -221,7 +221,7 @@ class CLS_Onepager_report_mtm_volatility():
         filler = (len("As-of date")-3)*"&nbsp;"
         
         content_HTML = f"""
-                                <table class='style_table'>
+                                <table class='style_table2'>
                                     <tr>
                                         <td class='style_table_header2'>Tenor</td>
                                         <td class='style_table_header2'>KRD</td>
