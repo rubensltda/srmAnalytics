@@ -8,9 +8,8 @@ import pkg_common.utils as ut
 from pkg_bloomberg.CLS_Mkt_data import CLS_Mkt_data
 from pkg_email.CLS_Msg_HTML import CLS_Msg_HTML
 from pkg_onepager.CLS_Onepager_common import CLS_Onepager_common
-from pkg_onepager.CLS_Onepager_report_asset_single import CLS_Onepager_report_asset
-from pkg_onepager.CLS_Onepager_report_asset_group import CLS_Onepager_report_group
 from pkg_onepager.CLS_Onepager_report_summary_basis import CLS_Onepager_report_summary_basis
+from pkg_onepager.CLS_Onepager_report_mtm_volatility import CLS_Onepager_report_mtm_volatility
 
 def run_report_RiskMonitoring():
 
@@ -36,20 +35,33 @@ def run_report_RiskMonitoring():
     ##################################################################
     report_common = CLS_Onepager_common()
     report_summary = CLS_Onepager_report_summary_basis()
+    report_mtm = CLS_Onepager_report_mtm_volatility()
 
     message.add_content_html(report_common.generate_html_header(msg_title))
 
+    # JAJO Basis summary
     message.add_content_html(f"<h3 style='background-color:powderblue;'>Basis Risk - JAJO reset</h3>")
     message.add_content_html(report_summary.generate_html_summary_basis(mkt_data) )
 
+    # MTM Volatility
     message.add_content_html(f"<h3 style='background-color:powderblue;'>MTM Volatility</h3>")
-    message.add_content_html(f"TBD")
+
+    message.add_content_html(f"<font class='style_title'>Structural Hedging - Swaps</class><hr>")
+    KRD_FV_SH = [14951, -650363 , -589989, -781541, -495277, -642452, -1480356, -718782, -964567, -930069, 704659, 748617, 720619, 657547, 603358, 544003, 503269, 443256, -387657, -593470, 679948, 4669802]
+    message.add_content_html(report_mtm.generate_html_mtm_volatility(mkt_data,KRD_FV_SH) )
+    
+    message.add_content_html(f"<font class='style_title'>Balance Sheet - Fair Value Accounts</class><hr>")
+    KRD_FV = [-192119,-677349,-531996,-761756, -790058, -138413, -848586, -922349, -1073037, -145584, 1199465, 1041222, 954095, 883523, 803439, 675947, 535045, 458041, -398102 , -580879, 680909, 4663367]
+    message.add_content_html(report_mtm.generate_html_mtm_volatility(mkt_data,KRD_FV) )
+    
+    # ED estimation
+    message.add_content_html(f"<h3 style='background-color:powderblue;'>ED Duration - Parametric estimation</h3>")
+    message.add_content_html("TBD: Parametric estimation using BPV and Convexity")
 
     message.add_content_html(report_common.generate_html_footer())
 
-
     message.save_html_file()
-
+    
     if config_onepager.send_email_flag == True:
         if config_onepager.send_email_idb == True:
             message.send_email_idb()

@@ -8,7 +8,7 @@
             "name": "Python: Current File",
             "type": "python",
             "request": "launch",
-            "program": "src/pkg_onepager/run_reports.py",
+            "program": "src/pkg_onepager/run_report_RiskMonitoring.py",
             "console": "integratedTerminal",
             "justMyCode": true
         }

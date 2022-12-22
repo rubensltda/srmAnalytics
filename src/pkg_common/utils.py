@@ -171,6 +171,16 @@ def format_quote(quote, quote_type='rate'):
     
     return formatted_rate
 
+def format_notional(amount):
+    formatted_amount = ""
+    try:
+        formatted_amount =  "{:,.0f}".format(amount)
+    except:
+        formatted_amount = amount
+    return formatted_amount
+
+
+
 def format_axis_label(ticker_quote_type):
     quote_type = ticker_quote_type.upper()
     
