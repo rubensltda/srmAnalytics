@@ -268,3 +268,18 @@ def format_change_html_small(spread_px, quote_type='rate'):
     return html_spread
 
 
+def get_parameters(param_find=0):
+    param = ''
+    try:
+        with open('parameters.txt') as f:
+            #lines = f.readlines()
+            readline=f.read().splitlines()
+        param = readline[param_find]
+    except:
+        print('Could not find parameter.')
+        param = ''
+
+    return param
+
+
+

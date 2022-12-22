@@ -66,11 +66,11 @@ def initialize():
     global send_email_idb;        send_email_idb = True
     #global send_email_idb;        send_email_idb = False
     
-    # global email_internal_srm_list;     email_internal_srm_list = ["rubensh@iadb.org"]
-    # global email_distribution_list;     email_distribution_list = ["rubensh@iadb.org","bloomrmp@iadb.org"]    
+    global email_internal_srm_list;     email_internal_srm_list = ["rubensh@iadb.org"]
+    global email_distribution_list;     email_distribution_list = ["rubensh@iadb.org","bloomrmp@iadb.org"]    
     
-    global email_internal_srm_list;     email_internal_srm_list = ["sylviag@iadb.org","rubensh@iadb.org"]
-    global email_distribution_list;     email_distribution_list = ["sylviag@iadb.org","rubensh@iadb.org","fruizgarcia@iadb.org","fin-alm@iadb.org"]    
+    # global email_internal_srm_list;     email_internal_srm_list = ["sylviag@iadb.org","rubensh@iadb.org"]
+    # global email_distribution_list;     email_distribution_list = ["sylviag@iadb.org","rubensh@iadb.org","fruizgarcia@iadb.org","fin-alm@iadb.org"]    
 
 
     #Assets and groups dictionaries

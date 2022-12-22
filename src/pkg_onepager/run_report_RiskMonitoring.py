@@ -20,7 +20,7 @@ def run_report_RiskMonitoring():
     ##################################################################
     mkt_data = CLS_Mkt_data()
     mkt_data.load_prices()
-    mkt_data.shift_and_calculate_basis_spreads()
+    #mkt_data.shift_and_calculate_basis_spreads()
     #mkt_data.export_data_csv()
 
 
@@ -35,16 +35,14 @@ def run_report_RiskMonitoring():
     # Initiate report class
     ##################################################################
     report_common = CLS_Onepager_common()
-    report_asset = CLS_Onepager_report_asset()
-    report_group = CLS_Onepager_report_group()
     report_summary = CLS_Onepager_report_summary_basis()
 
     message.add_content_html(report_common.generate_html_header(msg_title))
 
     message.add_content_html(f"<h3 style='background-color:powderblue;'>Basis Risk - JAJO reset</h3>")
     message.add_content_html(report_summary.generate_html_summary_basis(mkt_data) )
-    
-    message.add_content_html(f"<h3 style='background-color:powderblue;'>Structural Hedging - performance</h3>")
+
+    message.add_content_html(f"<h3 style='background-color:powderblue;'>MTM Volatility</h3>")
     message.add_content_html(f"TBD")
 
     message.add_content_html(report_common.generate_html_footer())

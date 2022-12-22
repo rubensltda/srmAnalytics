@@ -43,7 +43,7 @@ class CLS_Msg_HTML():
         
     def send_email_gmail(self):
         self.sender_email = "markets.reporting@gmail.com"
-        self.sender_password = "fdqhwgnejqydpzej"
+        self.sender_password = ""
         self.message['From'] = 'SRM Analytics'
         #self.message['To'] = 'Reporting Distribution List'
         #self.message['To'] = ', '.join(self.receiver_email)
@@ -51,7 +51,8 @@ class CLS_Msg_HTML():
 
         context = ssl.create_default_context()
         with smtplib.SMTP_SSL("smtp.gmail.com", 465, context=context) as server:
-            server.login(self.sender_email, self.sender_password)
+            #server.login(self.sender_email, self.sender_password)
+            server.login(self.sender_email, ut.get_parameters(0))
             server.sendmail(self.sender_email, self.receiver_email, self.message.as_string())
             server.quit()
         #print('Email Gmail sent.')
@@ -67,7 +68,8 @@ class CLS_Msg_HTML():
         with smtplib.SMTP('smtp.office365.com',587) as server:
             server.ehlo()
             server.starttls()
-            server.login(self.sender_email, self.sender_password)
+            #server.login(self.sender_email, self.sender_password)
+            server.login(self.sender_email, ut.get_parameters(1))
             server.sendmail(self.sender_email, self.receiver_email, self.message.as_string())
             server.quit()
         #print('Email IDB sent.')
